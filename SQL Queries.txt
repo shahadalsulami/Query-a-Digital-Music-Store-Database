@@ -1,0 +1,56 @@
+
+Query 1 (Question1 Set1):
+
+SELECT I.BillingCountry,
+       COUNT(DISTINCT IL.InvoiceId) AS "Total Invoices"
+FROM InvoiceLine AS IL
+GROUP BY BillingCountry
+ORDER BY 2 DESC;
+____________________________________________________________________
+
+Query 2 (Question2 Set1):
+
+SELECT C.City,
+       SUM(I.Total) AS "InvoiceTotal"
+FROM Invoice AS I
+JOIN Customer AS C
+ON I.CustomerId = C.CustomerId
+GROUP 1
+ORDER BY 2 DESC
+LIMIT 1;
+
+____________________________________________________________________
+
+Query 3 (Question3 Set1):
+
+SELECT C.CustomerId,
+       C.FirstName || " " || C.LastName AS "FullName",
+       SUM(I.Total) AS "MostSpent"
+FROM Customer  AS C
+JOIN Invoice AS I
+ON C.CustomerId = I.CustomerId
+GROUP BY C.CustomerId, "Full Name"
+ORDER BY SUM(I.Total)DESC
+LIMIT 1;
+____________________________________________________________________
+
+Query 4 (Question1 Set2):
+
+SELECT C.FirstName,
+       C.LastName,
+       C.Email,
+       G.Name AS "Name",
+       COUNT(I.InvoiceId) AS "InvoiceTotal"
+FROM Customer AS C
+JOIN Invoice AS I
+ON C.CustomerId = I.CustomerId
+JOIN InvoiceLine AS IL
+ON I.InvoiceId = IL.InvoiceId
+JOIN Track AS T
+ON IL.TrackId = T.TrackId
+JOIN Genre AS G
+ON T.GenreId = G.GenreId
+WHERE G.Name = "Rock"
+GROUP BY C.FirstName, C.LastName, C.Email, G.Name
+ORDER BY C.Email;
+
