@@ -7,5 +7,11 @@ This project involves querying a digital music store database using SQL to extra
 - Identify the highest spending customers.
 - Find customers who purchased tracks in specific genres, such as Rock.
 
+  # Project Questions
+- Which Countries Have the Most Invoices?
+- Which City Has the Best Customers?
+- Who is the Best Customer?
+- What are the Details of Rock Music Listeners?
+
 # Technologies Used
 - SQL (SQLite)
